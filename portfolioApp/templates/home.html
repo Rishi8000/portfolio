@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block start %}
+<style>
+    .hero-section {
+        padding: 60px 15px;
+        text-align: left;
+    }
+    .hero-section h4 {
+        padding: 10px;
+        color: green;
+        letter-spacing: 1px;
+    }
+    .hero-section h2 {
+        padding: 10px;
+        font-size: 1.75rem;
+        margin-top: 10px;
+        font-weight:bold;
+    }
+    .hero-section div p {
+        width:550px;
+        padding: 10px;
+        font-size: 1rem;  
+    }
+    .hero-section .btn {
+        margin-left: 10px;
+    }
+    
+    h5{
+        font-weight:bold;
+    }
+    .service-section{
+        padding: 25px 15px;
+        text-align: left;
+    }
+    .service-section h4{
+        padding: 10px;
+        color: green;
+    }
+    .service-section p{
+        width:550px;
+        padding-left: 10px;
+        font-size: 1rem; 
+    }
+    .custom-card {
+        width: 350px;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #f8f9fa;
+        margin:20px;
+    }
+    .custom-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    .custom-card .card-body {
+        padding: 20px;
+        text-align: center;
+    }
+    .custom-card .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .custom-card .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+    .custom-card .card-icon {
+        {% comment %} color: #007bff; {% endcomment %}
+        margin: 20px 0;
+    }
+</style>
+<div class="container">
+    <div class="container hero-section">
+        <h4>Hello, I'm Rishi Ginoya</h4>
+        <h2>I'm <span class='auto-type'></span></h2>
+        <div>
+        <p>A passionate Python Programmer and Web Developer, working with technologies like Python, Django, PHP, Flask, SQL, JavaScript and other tools and technologies</p>
+        </div>
+        <a href="https://github.com/Rishi8000" class="btn btn-dark" target="_blank">Github</a>
+        <a href="https://drive.google.com/file/d/1otsmWA9THTuFQvoQ0Tu1kebFdw_Jjgk9/view?usp=drivesdk" class="btn btn-outline-dark" target="_blank">Download CV</a>
+    </div>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('.auto-type', {
+            strings: ['Python Programmer', 'Frontend Developer','Backend Developer'],
+            typeSpeed: 150,
+        });
+    </script>
+
+
+    <section>
+        <div class="container service-section">
+            <h4>Services</h4>
+            <p>Discover the best services I offer, designed to ensure the success of your project.</p>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center min-vh-100">
+            {% for service in services %}
+                <div class="card custom-card">
+                    <div class='d-flex justify-content-center'>
+                        <i class="{{ service.icon }} card-icon"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.title }}</h5>
+                        <p class="card-text">{{ service.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+
+
+{% endblock %}
