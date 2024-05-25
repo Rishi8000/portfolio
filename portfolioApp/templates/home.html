@@ -3,11 +3,11 @@
 {% block start %}
 <style>
     .hero-section {
-        padding: 60px 15px;
+        padding: 70px 15px;
         text-align: left;
     }
-    .hero-section h4 {
-        padding: 10px;
+    .hero-section h3 {
+        padding: 0px 0px 0px 10px;
         color: green;
         letter-spacing: 1px;
     }
@@ -18,7 +18,8 @@
         font-weight:bold;
     }
     .hero-section div p {
-        width:550px;
+        width: 100%;
+        max-width: 550px;
         padding: 10px;
         font-size: 1rem;  
     }
@@ -38,20 +39,22 @@
         color: green;
     }
     .service-section p{
-        width:550px;
+        width: 100%;
+        max-width: 550px;
         padding-left: 10px;
         font-size: 1rem; 
         color: green;
     }
     .custom-card {
-        width: 350px;
+        width: 100%;
+        max-width: 310px;
         border: none;
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         background-color: #f8f9fa;
-        margin:20px;
+        margin: 20px;
     }
     .custom-card:hover {
         transform: translateY(-10px);
@@ -71,16 +74,53 @@
         color: #6c757d;
     }
     .custom-card .card-icon {
-        {% comment %} color: #007bff; {% endcomment %}
         margin: 20px 0;
     }
+    .contact {
+        margin-top:50px;
+        padding: 20px 10px;
+        background-color: #f8f9fa;
+        margin-bottom:10px;
+    }
+    
+    .contact-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        {% comment %} padding-left: 200px; {% endcomment %}
+    }
+    
+    .contact-subtext {
+        font-size: 1rem;
+        color: #6c757d;
+        {% comment %} padding-left: 200px; {% endcomment %}
+    }
+    
+    .contact-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .contact-btn:hover {
+        background-color: #218838;
+        color: white;
+        text-decoration:none;
+    }
+    .contact text{
+        padding-left:30px;
+    }
+
 </style>
 <div class="container">
-    <div class="container hero-section">
-        <h4>Hello, I'm Rishi Ginoya</h4>
+    <div class="hero-section">
+        <h3>Hello, I'm Rishi Ginoya</h3>
         <h2>I'm <span class='auto-type'></span></h2>
         <div>
-        <p>A passionate Python Programmer and Web Developer, working with technologies like Python, Django, PHP, Flask, SQL, JavaScript and other tools and technologies</p>
+            <p>A passionate Python Programmer and Web Developer, working with technologies like Python, Django, PHP, Flask, SQL, JavaScript and other tools and technologies</p>
         </div>
         <a href="https://github.com/Rishi8000" class="btn btn-dark" target="_blank">Github</a>
         <a href="https://drive.google.com/file/d/1otsmWA9THTuFQvoQ0Tu1kebFdw_Jjgk9/view?usp=drivesdk" class="btn btn-outline-dark" target="_blank">Download CV</a>
@@ -89,19 +129,18 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
         var typed = new Typed('.auto-type', {
-            strings: ['Python Programmer', 'Frontend Developer','Backend Developer'],
+            strings: ['Python Programmer', 'Frontend Developer', 'Backend Developer'],
             typeSpeed: 150,
         });
     </script>
 
-
-    <section>
-        <div class="container service-section">
+    
+        <div class="service-section">
             <h4>Services</h4>
             <p>Discover the best services I offer, designed to ensure the success of your project.</p>
         </div>
 
-        <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-wrap justify-content-center align-items-center">
             {% for service in services %}
                 <div class="card custom-card">
                     <div class='d-flex justify-content-center'>
@@ -114,9 +153,23 @@
                 </div>
             {% endfor %}
         </div>
-    </section>
 
 </div>
+<div class="container-fluid contact">
+    
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8 ">
+                <p class="contact-text">Have any project in mind?</p>
+                <p class="contact-subtext">Feel free to contact me or just say friendly hello!</p>
+            </div>
+            <div class="col-md-4 text-md-center text-center">
+                <a href="{% url 'contact' %}" class="contact-btn">Contact Me</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 {% endblock %}

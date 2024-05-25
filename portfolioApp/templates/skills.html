@@ -1,5 +1,75 @@
 {% extends "base.html" %}
 
 {%  block start %}
-<h1>skills</h1>
+
+<style>
+    .skills-section {
+        padding: 20px 15px;
+    }
+    .custom-card {
+        width: 100%;
+        max-width: 200px;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #f8f9fa;
+        margin: 20px;
+    }
+    .custom-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    .custom-card h4{
+        font-weight: bold;
+        text-align:center;
+    }
+    .custom-card .card-body {
+        padding: 10px;
+        text-align: center;
+    }
+    .custom-card .card-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .custom-card .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+    .custom-card .card-icon {
+        margin: 20px 0;
+    }
+    img {
+        mix-blend-mode:multiply;
+        {% comment %} width:80px; {% endcomment %}
+        height:105px;
+        padding-top:25px;
+        
+    }
+</style>
+
+<div class="container skills-section">
+    {% for category, skills in skills.items %}
+        <h3 class="text-center pt-5">{{ category }}</h3>
+            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                {% for skill in skills %}
+                    <div class="card custom-card">
+                        <div class='d-flex justify-content-center'>
+                            {% comment %} <i class="fa-brands fa-html5 fa-5x fa-fw card-icon pt-2"></i> {% endcomment %}
+                            <img src="{{ skill.icon }}">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">{{ skill.name }}</h6>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    {% endfor %}
+</div>
+
+
+
+
+
 {% endblock %}
