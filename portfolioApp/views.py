@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from .forms import ContactForm
 
 def home(request):
     # print(request.resolver_match.url_name)
@@ -77,7 +78,8 @@ def aboutMe(request):
 
 def contact(request):
     print(request.resolver_match.url_name)
-    context = {'page': ' - Contact','id':'contact'}
+    f = ContactForm()
+    context = {'page': ' - Contact','id':'contact','form':f}
     # template = loader.get_template('contact.html')
     # return HttpResponse(template.render(context=context))
-    return render(request, 'contact.html')
+    return render(request, 'contact.html',context=context)
